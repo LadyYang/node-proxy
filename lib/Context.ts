@@ -15,6 +15,9 @@ export default class Context {
 
   href: string = '';
 
+  /** 将请求转发的服务器 */
+  targetServer = '';
+
   constructor(public req: IncomingMessage, public res: ServerResponse) {
     this.method = req.method;
     this.headers = req.headers;

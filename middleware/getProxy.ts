@@ -5,7 +5,7 @@ import { request } from 'http';
 
 export default async (ctx: Context, next: Next) => {
   if (ctx.method === 'GET') {
-    const req = request('http://localhost:8081' + ctx.url, res => {
+    const req = request(ctx.targetServer + ctx.url, res => {
       // 代理响应头
       for (let [k, v] of Object.entries(res.headers)) {
         ctx.res.setHeader(k, v as any);
@@ -13,7 +13,7 @@ export default async (ctx: Context, next: Next) => {
 
       res.pipe(ctx.res);
 
-      res.on('close', () => console.log('close'));
+      res.on('close', () => console.log(process.pid));
 
       res.on('error', e => console.log(e));
     });
