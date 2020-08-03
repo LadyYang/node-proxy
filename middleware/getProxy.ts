@@ -13,8 +13,6 @@ export default async (ctx: Context, next: Next) => {
 
       res.pipe(ctx.res);
 
-      res.on('close', () => console.log(process.pid));
-
       res.on('error', e => console.log(e));
     });
 

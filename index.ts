@@ -4,7 +4,7 @@
  * @Github: https://github.com/LadyYang
  * @Email: 1763615252@qq.com
  * @Date: 2020-08-03 14:47:58
- * @LastEditTime: 2020-08-03 21:37:10
+ * @LastEditTime: 2020-08-03 22:37:53
  * @LastEditors: chtao
  * @FilePath: \node-proxy\index.ts
  */
@@ -71,6 +71,7 @@ if (isMaster) {
       ctx.res.once('finish', () => {
         process.send?.({ type: 'FINISH', payload: server });
       });
+
       await next();
     });
   });
